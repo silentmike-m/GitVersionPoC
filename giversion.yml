@@ -1,0 +1,21 @@
+mode: Mainline
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}'
+branches:
+  master:
+    regex: 'master$'
+    tag: ''
+    increment: None
+  minor:
+    regex: feature?[/-]   
+    tag: useBranchName
+    increment: Minor
+    source-branches: ['develop']
+    mode: ContinuousDelivery
+  major:
+    regex: develop$
+    tag: useBranchName
+    increment: Major
+    source-branches: ['master']
+    mode: ContinuousDelivery
